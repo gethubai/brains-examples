@@ -1,0 +1,115 @@
+{
+  "name": "openai-brain-tutorial",
+  "version": "1.0.0",
+  "description": "Brain created to teach",
+  "type": "commonjs",
+  "main": "./src/main.js",
+  "engines": {
+    "node": ">= 18.12 <19",
+    "hubai": "^0.0.1"
+  },
+  "scripts": {
+    "start": "nodemon ./src/devServer.ts",
+    "clean": "rimraf coverage build tmp",
+    "prebuild": "npm run lint",
+    "build": "tsc -p tsconfig.json",
+    "build:watch": "tsc -w -p tsconfig.json",
+    "package": "hubai brain package",
+    "package:dev": "hubai brain package --selfHosted=http://127.0.0.1:1367",
+    "lint": "eslint . --ext .ts --ext .mts",
+    "test": "jest --coverage",
+    "prettier": "prettier --config .prettierrc --write .",
+    "test:watch": "jest --watch"
+  },
+  "brain": {
+    "name": "openai_brain_tutorial",
+    "displayName": "OpenAiTutorial",
+    "description": "Brain created to teach",
+    "capabilities": [
+      "conversation",
+      "voice_transcription"
+    ],
+    "settingsMap": [
+      {
+        "displayName": "OpenAI API Key",
+        "name": "apiKey",
+        "type": "string",
+        "required": true
+      },
+      {
+        "displayName": "Text Model",
+        "name": "textModel",
+        "type": "string",
+        "required": true,
+        "defaultValue": "gpt-3.5-turbo",
+        "enumValues": [
+          "gpt-3.5-turbo",
+          "text-davinci-003",
+          "gpt-4"
+        ],
+        "scope": "chat_overridable"
+      },
+      {
+        "displayName": "Audio Transcription Model",
+        "name": "audioTranscriberModel",
+        "type": "string",
+        "required": true,
+        "defaultValue": "whisper-1",
+        "enumValues": [
+          "whisper-1",
+          "whisper-2"
+        ],
+        "scope": "chat_overridable"
+      },
+      {
+        "displayName": "Audio Transcriber Language",
+        "name": "audioTranscriberDefaultLanguage",
+        "type": "string",
+        "required": true,
+        "defaultValue": "pt",
+        "enumValues": [
+          "pt",
+          "en",
+          "es"
+        ],
+        "scope": "chat_overridable"
+      }
+    ]
+  },
+  "publisher": "test",
+  "devDependencies": {
+    "@types/jest": "~29.5",
+    "@types/node": "~18",
+    "@typescript-eslint/eslint-plugin": "~5.59",
+    "@typescript-eslint/parser": "~5.59",
+    "body-parser": "^1.20.2",
+    "eslint": "~8.38",
+    "eslint-config-prettier": "~8.8",
+    "eslint-plugin-jest": "~27.2",
+    "express": "^4.18.2",
+    "jest": "~29.5",
+    "nodemon": "^3.0.1",
+    "prettier": "~2.8",
+    "rimraf": "~5.0",
+    "ts-api-utils": "~0.0.44",
+    "ts-jest": "~29.1",
+    "ts-node": "^10.9.1",
+    "typescript": "~5.0"
+  },
+  "author": "test",
+  "keywords": [
+    "openai_brain_tutorial"
+  ],
+  "categories": [
+    "brain"
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@hubai/brain-sdk": "^1.0.1",
+    "@tectalic/openai": "^0.3.1",
+    "tslib": "~2.5"
+  },
+  "volta": {
+    "node": "18.12.1"
+  }
+}
